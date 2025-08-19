@@ -41,7 +41,7 @@ jupyter notebook
 
 ## Key Features
 - **User–Movie Matrix Construction**  
-  Put ratings into a sparse matrix, sort for the most full section of data, and then handle missing valyes.
+  Put ratings into a sparse matrix, sort for the most full section of data, and then handle missing values.
 
 - **Cosine Similarity Engine**  
   Measure similarity between movies based on user rating patterns. See which movies that are rated high are correlated with each other. 
@@ -59,7 +59,7 @@ jupyter notebook
 ## Example Outputs
 
 ### Top 10 Most Rated Movies
-| Title                                                     | Similarity |
+| Title                                                     | Number of Ratings |
 |-----------------------------------------------------------|------------|
 | Shawshank Redemption, The (1994)                          | 102929     |
 | Forrest Gump (1994)                                       | 100296     |
@@ -97,11 +97,10 @@ Even this simple cosine similarity model shows how analytics can provide immedia
 
 
     project-root/
-    │── data/                  # MovieLens dataset (ratings.csv, movies.csv)
-    │── notebooks/             
-    │   └── 01_eda.ipynb       # Main Jupyter Notebook (exploration & modeling)
-    │── README.md              # Project documentation (this file)
-    │── requirements.txt       # Python dependencies
+    │── data/                    # MovieLens dataset (ratings.csv, movies.csv)
+    │── streaming_project.ipynb  # Main Jupyter Notebook (exploration & modeling)
+    │── README.md                # Project documentation (this file)
+    │── requirements.txt         # Python dependencies
 
 
 ---
