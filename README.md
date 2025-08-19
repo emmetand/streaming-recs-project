@@ -41,7 +41,7 @@ jupyter notebook
 
 ## Key Features
 - **User–Movie Matrix Construction**  
-  Put ratings into a sparse matrix, sort for the most full section of data, and then handle missing valyes.
+  Put ratings into a sparse matrix, sort for the most full section of data, and then handle missing values.
 
 - **Cosine Similarity Engine**  
   Measure similarity between movies based on user rating patterns. See which movies that are rated high are correlated with each other. 
