@@ -1,165 +1,130 @@
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
+# Movie Recommendation Engine
+
+A simple example version of a movie recommender engine built in Python using the [MovieLens dataset](https://grouplens.org/datasets/movielens/).  
+
+This project demonstrates how to build a **content-based movie recommender** from scratch using **pandas, cosine similarity, and basic validation checks**. The goal is to explore and begin building useful applications at the intersection of data analytics and entertainment — a strong foundation for media/tech/consulting applications.
+
+---
+
+## Project Overview
+- **Dataset:** ~650K ratings from the MovieLens dataset (cleaned from the 32M set)  
+- **Goal:** Recommend movies to users based on their past ratings. Then build a real time recommender to ask the current user about their preferences.  
+- **Approach:**  
+  1. Merge user ratings and movie data into a single dataframe.  
+  2. Create a user/movie matrix (users as rows, movies as columns).  
+  3. Compute cosine similarity between movies.  
+  4. Generate recommendations based on movies a user has already rated.  
+  5. Validate results with simple checks (sparsity, popularity, neighbors).  
+
+---
+
+## Tech Stack & Setup
+- **Python** (pandas, numpy)  
+- **scikit-learn** (cosine similarity)  
+- **matplotlib** (visualization)  
+
+### Create & activate a virtual environment (macOS/Linux)
+python3 -m venv .venv
+source .venv/bin/activate
+
+### or Windows PowerShell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+
+### Install packages
+pip install -r requirements.txt
+
+### Launch Jupyter
+jupyter notebook
+
+---
+
+## Key Features
+- **User–Movie Matrix Construction**  
+  Put ratings into a sparse matrix, sort for the most full section of data, and then handle missing valyes.
+
+- **Cosine Similarity Engine**  
+  Measure similarity between movies based on user rating patterns. See which movies that are rated high are correlated with each other. 
+
+- **Recommendation Function**  
+  Suggests new titles by using similarity scores from the broader data to make recommendations to single users. 
+
+- **Simple Evaluation Checks**  
+  - Ratings shape & sparsity check  
+  - See Top 10 most rated movies  
+  - Nearest neighbors for a chosen (ideally esoteric) title  
+
+---
+
+## Example Outputs
+
+### Top 10 Most Rated Movies
+| Title                                                     | Similarity |
+|-----------------------------------------------------------|------------|
+| Shawshank Redemption, The (1994)                          | 102929     |
+| Forrest Gump (1994)                                       | 100296     |
+| Pulp Fiction (1994)                                       | 98409      |
+| Matrix, The (1999)                                        | 93808      |
+| Silence of the Lambs, The (1991)                          | 90330      |
+| Star Wars: Episode IV - A New Hope (1977)                 | 85010      |
+| Fight Club (1999)                                         | 77332      |
+| Jurassic Park (1993)                                      | 75233      |
+| Schindler's List (1993)                                   | 73849      |
+| Lord of the Rings: The Fellowship of the Ring, The (2001) | 73122      |
 
 
-<h3 align="center">MOVIE REC PROJECT</h3>
+### Nearest Neighbors of *Toy Story (1995)*
+| Title                  | Similarity |
+|-------------------------|------------|
+| A Bug's Life (1998)     | 0.91       |
+| Monsters, Inc. (2001)   | 0.88       |
+| Finding Nemo (2003)     | 0.85       |
 
-  <p align="left">
-    Streaming Content Recommendation Engine (Python) using the MovieLens 32M dataset. 
+---
 
-  </p>
-</div>
+## Business Relevance
+Streaming and media companies leverage more advanced types of these recommenders to:
+- **Improve content discovery** (personalized “Because you viewed…” suggestions)  
+- **Guide marketing campaigns** (bundle popular titles with related niche content)  
+- **Optimize catalog strategy** (identify clusters of substitutable movies)  
 
+Even this simple cosine similarity model shows how analytics can provide immediate, actionable insights without requiring deep learning or large infrastructure.
 
+---
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contact">Contact</a></li>
-
-  </ol>
-</details>
-
-
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-This project is to create a basic example of how a recommendation engine could work. Using the MovieLens 32M data set we take a subset of the 500 most rated movies and the 500 users with the most reviews and make recommendations to them. 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-
-
-
-
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/yourusername/streaming-recs-project.git
-   cd streaming-recs-project
-   ```
-3. Install dependencies (or run the install from code)
-   ```sh
-   pip install -r requirements.txt
-   ```
-4. Download the MovieLens dataset and plate the ratings.csv and movies.csv files into:
-   ```sh
-   data/ml32/
-   ```
-  
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Project Structure
 
 
 
+    project-root/
+    │── data/                  # MovieLens dataset (ratings.csv, movies.csv)
+    │── notebooks/             
+    │   └── 01_eda.ipynb       # Main Jupyter Notebook (exploration & modeling)
+    │── README.md              # Project documentation (this file)
+    │── requirements.txt       # Python dependencies
 
 
+---
 
-<!-- CONTACT -->
+## Reflection
+As a creative development professional pivoting into analytics, I built this project to connect interest and domain experience in entertainment with data science tools. By creating a simple recommender, I'm exploring how analytics can support content strategy, personalization, and audience engagement; key areas for media and technology companies.
+
+---
+
+## Next Steps
+Potential future improvements:
+- Create a program for users to ask for recommendations based on a specific movie
+- Create profiles or Id numbers so users can update their ratings as they watch, and get more recs.
+- Incorporate genres / metadata into recommendations.  
+
+
+---
+
 ## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Created by **Emmet Andrews** | UCLA MSBA (2026)  
+📩 [LinkedIn](https://www.linkedin.com/in/emmet-andrews/) | [GitHub](https://github.com/emmetand)
 
 
 
 
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
-
-
-
-
-
-
-#
+Data License: This project uses the public MovieLens dataset by GroupLens. Please see their site for license and citation instructions. Data is downloaded by users at runtime; it is not redistributed in this repository.
