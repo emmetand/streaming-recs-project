@@ -37,6 +37,19 @@ pip install -r requirements.txt
 ### Launch Jupyter
 jupyter notebook
 
+### Download the MovieLens data
+
+This project expects MovieLens CSVs at `data/ml32/ratings.csv` and `data/ml32/movies.csv`.
+
+#### Regular Option: Downloads ml-latest-small (~100k ratings) from the repo root
+    mkdir -p data/ml32
+    curl -L https://files.grouplens.org/datasets/movielens/ml-latest-small.zip -o data/ml32/ml.zip
+    unzip -j data/ml32/ml.zip "ml-latest-small/ratings.csv" -d data/ml32
+    unzip -j data/ml32/ml.zip "ml-latest-small/movies.csv"  -d data/ml32
+    rm data/ml32/ml.zip
+
+The small dataset is the default if you want to try for yourself. But can be upgraded to the 32M entry dataset if space allows. 
+
 ---
 
 ## Key Features
