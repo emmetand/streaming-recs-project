@@ -106,7 +106,7 @@ Even this simple cosine similarity model shows how analytics can provide immedia
 
 ---
 
-## Reflection
+## Wrap Up
 As a creative development professional pivoting into analytics, I built this project to connect interest and domain experience in entertainment with data science tools. By creating a simple recommender, I'm exploring how analytics can support content strategy, personalization, and audience engagement; key areas for media and technology companies.
 
 ---
